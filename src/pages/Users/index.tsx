@@ -22,7 +22,7 @@ const Users: React.FC = () => {
   return (
     <S.Container>
 
-<ContentHeader title="Users" lineColor="#72B3F2">
+<ContentHeader title="Usuários" lineColor="#f74747">
         <SelectInput options={options} />
       </ContentHeader>
     </S.Container>

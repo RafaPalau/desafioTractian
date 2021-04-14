@@ -22,7 +22,7 @@ const Units: React.FC = () => {
   return (
     <S.Container>
 
-<ContentHeader title="Units" lineColor="#72B3F2">
+<ContentHeader title="Unidades" lineColor="#f3c52e">
         <SelectInput options={options} />
       </ContentHeader>
     </S.Container>

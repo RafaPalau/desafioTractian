@@ -1,3 +1,4 @@
+ // eslint-disable-next-line
 export default {
   title: "light",
 
@@ -11,7 +12,7 @@ export default {
     gray: "#BFBFBF",
 
     sucess: "#6CD85D",
-    info: "#72B3F2",
+    info: "#1E63ED",
     warning: "#E13C6C",
   },
 };

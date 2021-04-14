@@ -22,7 +22,7 @@ const Companys: React.FC = () => {
   return (
     <S.Container>
 
-<ContentHeader title="Companys" lineColor="#72B3F2">
+<ContentHeader title="Empresas" lineColor="#48d648">
         <SelectInput options={options} />
       </ContentHeader>
     </S.Container>

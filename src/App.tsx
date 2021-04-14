@@ -1,24 +1,20 @@
 import React from "react";
 import { ThemeProvider } from "styled-components";
 import GlobalStyles from "./styles/Globalstyles";
-import Layout from "./components/Layout";
 
-import dark from "./styles/themes/dark";
-import Dashboard from "./pages/Dashboard";
-import Ativos from "./pages/Ativos";
+import {useTheme} from './hooks/themes'
 
+import Routes from './routes'
 
 const App: React.FC = () => {
+  const { theme} = useTheme()
   return (
 
 
 
-    <ThemeProvider theme={dark}>
+    <ThemeProvider theme={theme}>
       <GlobalStyles />
-      <Layout >
-        {/* <Dashboard /> */}
-        <Ativos />
-      </Layout>
+  <Routes/>
   
     </ThemeProvider>
   

@@ -4,7 +4,7 @@ import SelectInput from "../../components/SelectInput";
 
 import * as S from "./styles";
 
-const Ativos: React.FC = () => {
+const Actives: React.FC = () => {
   const options = [
     {
       value: "Motor 1",
@@ -21,12 +21,10 @@ const Ativos: React.FC = () => {
   ];
   return (
     <S.Container>
-
-<ContentHeader title="Ativos" lineColor="#72B3F2">
+      <ContentHeader title="Ativos" lineColor="#72B3F2">
         <SelectInput options={options} />
       </ContentHeader>
     </S.Container>
-   
-  )
-}
-export default Ativos
+  );
+};
+export default Actives;

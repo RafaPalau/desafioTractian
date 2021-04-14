@@ -20,22 +20,22 @@ const Aside: React.FC = () => {
       </S.Header>
 
       <S.MenuContainer>
-        <S.MenuItemLink href="#">
+        <S.MenuItemLink href="/dashboard">
           <AiOutlineLineChart />
           Dashboard
         </S.MenuItemLink>
-        <S.MenuItemLink href="#">
+        <S.MenuItemLink href="/actives">
           <AiFillApi />
           Ativos
         </S.MenuItemLink>
-        <S.MenuItemLink href="#">
+        <S.MenuItemLink href="units">
           <SiUnity /> Unidades
         </S.MenuItemLink>
-        <S.MenuItemLink href="#">
+        <S.MenuItemLink href="empresas">
           <RiCommunityLine />
           Empresas
         </S.MenuItemLink>
-        <S.MenuItemLink href="#">
+        <S.MenuItemLink href="users">
           <AiOutlineUsergroupDelete /> Usuários
         </S.MenuItemLink>
         <S.MenuItemLink href="#">
