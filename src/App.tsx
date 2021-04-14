@@ -2,22 +2,17 @@ import React from "react";
 import { ThemeProvider } from "styled-components";
 import GlobalStyles from "./styles/Globalstyles";
 
-import {useTheme} from './hooks/themes'
+import { useTheme } from "./hooks/themes";
 
-import Routes from './routes'
+import Routes from "./routes";
 
 const App: React.FC = () => {
-  const { theme} = useTheme()
+  const { theme } = useTheme();
   return (
-
-
-
     <ThemeProvider theme={theme}>
       <GlobalStyles />
-  <Routes/>
-  
+      <Routes />
     </ThemeProvider>
-  
   );
 };
 export default App;

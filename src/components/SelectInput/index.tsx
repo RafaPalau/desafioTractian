@@ -1,4 +1,3 @@
-import { formatWithOptions } from "node:util";
 import React from "react";
 import * as S from "./styles";
 

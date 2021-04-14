@@ -7,16 +7,28 @@ import * as S from "./styles";
 const Users: React.FC = () => {
   const options = [
     {
-      value: "Motor 1",
-      label: "Motor 1",
+      value: "user",
+      label: "Testador Um",
     },
     {
-      value: "Motor 2",
-      label: "Motor 2",
+      value: "user",
+      label: "Testador Dois",
     },
     {
-      value: "ventoinha 1",
-      label: "ventoinha 1",
+      value: "user",
+      label: "Testador Três",
+    },
+    {
+      value: "user",
+      label: "Testador Quarto",
+    },
+    {
+      value: "user",
+      label: "Testador Cinco",
+    },
+    {
+      value: "user",
+      label: "Testador Seis",
     },
   ];
   return (

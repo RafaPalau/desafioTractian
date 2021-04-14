@@ -3,7 +3,6 @@ import * as S from "./styles";
 
 import {
   AiOutlineLineChart,
-  AiFillApi,
   AiOutlineUsergroupDelete,
 } from "react-icons/ai";
 import { MdExitToApp } from "react-icons/md";
@@ -20,15 +19,11 @@ const Aside: React.FC = () => {
       </S.Header>
 
       <S.MenuContainer>
-        <S.MenuItemLink href="/dashboard">
-          <AiOutlineLineChart />
-          Dashboard
-        </S.MenuItemLink>
         <S.MenuItemLink href="/actives">
-          <AiFillApi />
+          <AiOutlineLineChart />
           Ativos
         </S.MenuItemLink>
-        <S.MenuItemLink href="units">
+           <S.MenuItemLink href="units">
           <SiUnity /> Unidades
         </S.MenuItemLink>
         <S.MenuItemLink href="empresas">

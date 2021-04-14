@@ -7,17 +7,10 @@ import * as S from "./styles";
 const Companys: React.FC = () => {
   const options = [
     {
-      value: "Motor 1",
-      label: "Motor 1",
+      value: "Empresa",
+      label: "Empresa Teste"
     },
-    {
-      value: "Motor 2",
-      label: "Motor 2",
-    },
-    {
-      value: "ventoinha 1",
-      label: "ventoinha 1",
-    },
+   
   ];
   return (
     <S.Container>
