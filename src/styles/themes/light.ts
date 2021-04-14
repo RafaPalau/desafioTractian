@@ -3,15 +3,15 @@ export default {
 
   colors: {
     primary: "#DCDCDC",
-    secondary: "#FFFFFF",
-    tertiary: "#F5F5F5",
+    secondary: "#F2F4F8",
+    tertiary: "#FFFFFF",
 
     white: "#000000",
     black: "#FFFFFF",
     gray: "#BFBFBF",
 
-    sucess: "#22C55E",
-    info: "#4B6EC3",
+    sucess: "#6CD85D",
+    info: "#72B3F2",
     warning: "#E13C6C",
   },
 };
