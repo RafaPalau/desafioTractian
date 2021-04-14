@@ -1,17 +1,24 @@
 import React from "react";
 import * as S from "./styles";
 
-const ContentHeader: React.FC = () => {
+interface IContentHeaderProps {
+  title: string;
+  lineColor: string;
+  children: React.ReactNode;
+}
+
+const ContentHeader: React.FC<IContentHeaderProps> = ({
+  lineColor,
+  title,
+  children,
+}) => {
   return (
-   <S.Container>
-     <S.TitleContainer>
-       <h1>Título</h1>
-     </S.TitleContainer>
-     <S.Controllers>
-<button type="button">Botão A </button>
-<button type="button">Botão B </button>
-     </S.Controllers>
-   </S.Container>
+    <S.Container >
+      <S.TitleContainer lineColor={lineColor}>
+        <h1> {title}</h1>
+      </S.TitleContainer>
+      <S.Controllers>{children}</S.Controllers>
+    </S.Container>
   );
 };
 export default ContentHeader;

@@ -1,9 +1,10 @@
 import React from "react";
 import ContentHeader from "../../components/ContentHeader";
 import SelectInput from "../../components/SelectInput";
+
 import * as S from "./styles";
 
-const Dashboard: React.FC = () => {
+const Units: React.FC = () => {
   const options = [
     {
       value: "Motor 1",
@@ -20,10 +21,12 @@ const Dashboard: React.FC = () => {
   ];
   return (
     <S.Container>
-      <ContentHeader title="Dashboard" lineColor="#72B3F2">
+
+<ContentHeader title="Units" lineColor="#72B3F2">
         <SelectInput options={options} />
       </ContentHeader>
     </S.Container>
-  );
-};
-export default Dashboard;
+   
+  )
+}
+export default Units

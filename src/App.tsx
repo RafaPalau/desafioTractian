@@ -5,6 +5,7 @@ import Layout from "./components/Layout";
 
 import dark from "./styles/themes/dark";
 import Dashboard from "./pages/Dashboard";
+import Ativos from "./pages/Ativos";
 
 
 const App: React.FC = () => {
@@ -15,7 +16,8 @@ const App: React.FC = () => {
     <ThemeProvider theme={dark}>
       <GlobalStyles />
       <Layout >
-        <Dashboard />
+        {/* <Dashboard /> */}
+        <Ativos />
       </Layout>
   
     </ThemeProvider>
