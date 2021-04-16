@@ -4,48 +4,61 @@ import SelectInput from "../../components/SelectInput";
 import axios, { AxiosResponse } from "axios";
 
 import * as S from "./styles";
+import Loading from "../../components/loading";
 
 interface IUnitsProps {
   id: number;
   name: string;
-companyId: number;
+  companyId: number;
 }
 
-const Units: React.FC = () => {
+const Units: React.FC = (props) => {
   const [data, setData] = useState<IUnitsProps>();
+  console.log(data);
+  const [unitSelected, setUnitSelected] = useState<string>("1");
 
   useEffect(() => {
-    // Use [] as second argument in useEffect for not rendering each time
     axios
-      .get("https://my-json-server.typicode.com/tractian/fake-api/units")
+      .get(
+        `https://my-json-server.typicode.com/tractian/fake-api/units/${unitSelected}`
+      )
       .then((response: AxiosResponse) => {
         setData(response.data);
-             });
-  }, []);
+      });
+  }, [unitSelected]);
+
   const options = [
     {
-      value: "Unidade Jaguar",
+      value: "1",
       label: "Unidade Jaguar",
     },
     {
-      value:"Unidade Tobias",
+      value: "2",
       label: "Unidade Tobias",
     },
-   
   ];
 
- 
   return (
-    
     <S.Container>
-
-<ContentHeader title="Unidades" lineColor="#f3c52e">
-        <SelectInput options={options} />
+      <ContentHeader title="Unidades" lineColor="#f3c52e">
+        <SelectInput
+          options={options}
+          onChange={(event) => setUnitSelected(event.target.value)}
+        />
       </ContentHeader>
-
-      {console.log(data)}
+      {!data ? (
+        <>
+          <Loading key={props} />
+        </>
+      ) : (
+        <div>
+          {" "}
+          {[data].map((item) => (
+            <h1 key={item.id}>{item?.name}</h1>
+          ))}{" "}
+        </div>
+      )}
     </S.Container>
-   
-  )
-}
-export default Units
+  );
+};
+export default Units;
