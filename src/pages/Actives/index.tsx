@@ -4,6 +4,10 @@ import SelectInput from "../../components/SelectInput";
 import axios, { AxiosResponse } from "axios";
 import * as S from "./styles";
 import Loading from "../../components/loading";
+import ImageActive from "../../components/ImageActive";
+import MetricsInformations from "../../components/MetricsInformations";
+import SpecificationsActives from "../../components/SpecificationsActives";
+import ContainerCard from "../../components/ContainerCard";
 
 interface IActivesProps {
   id: number;
@@ -55,44 +59,84 @@ const Actives: React.FC = (props) => {
   }, [sensorSelected]);
 
   return (
-    <S.Container>
+    <>
       <ContentHeader title="Ativos" lineColor="#72B3F2">
         <SelectInput
           options={sensors}
           onChange={(event) => setSensorSelected(event.target.value)}
-          // defaultValue={sensorSelected}
         />
       </ContentHeader>
-      {!data ? (
-        <Loading key={props} />
-      ) : (
-        <ul>
-          {[data].map((item) => (
-            <li key={item.id}>
-              <h1>{item?.name}</h1>
-              <p>Id companhia: {item?.companyId}</p>
-              <p> Saúde em %: {item?.healthscore}</p>
-              <p>Data da Ultima Coleta Uptime {item.metrics.lastUptimeAt}</p>
-              <p>Total de Coletas: {item.metrics.totalCollectsUptime}</p>
-              <p>Total de Horas de Coletas: {item.metrics.totalUptime.toFixed(2)}</p>
-              <p>modelo: {item?.model}</p>
-              <p>Nome Sensor: {item?.sensors}</p>
-              <p>maxTemp: {item?.specifications.maxTemp}</p>
-              <p>Power: {item?.specifications.power}</p>
-              <p>RPM: {item?.specifications.rpm}</p>
-              <p> Estado atual: {item?.status}</p>
-              <p>Unidade: {item?.unitId}</p>
-              <img
-                style={{ width: "300px" }}
-                src={item?.image}
-                alt={`Imagem da ${item.image}`}
-              />
-            </li>
-          ))}{" "}
-        </ul>
-      )}
 
-    </S.Container>
+      <S.Container>
+        <S.ContainerInformations>
+          {!data ? (
+            <Loading key={props} />
+          ) : (
+            <ul>
+              {[data].map((item) => (
+                <li key={item.id}>
+                  <h1>{item?.name}</h1>
+                  <p>Id companhia: {item?.companyId}</p>
+                  <p> Saúde em %: {item?.healthscore}</p>
+
+                  <p>modelo: {item?.model}</p>
+                  <p>Nome Sensor: {item?.sensors}</p>
+
+                  <p> Estado atual: {item?.status}</p>
+                  <p>Unidade: {item?.unitId}</p>
+
+                  <ContainerCard title="Especificações técnicas">
+                    <SpecificationsActives
+                      title="maxTemp:"
+                      subtitle={item?.specifications.maxTemp}
+                    />
+                    <SpecificationsActives
+                      title="Power:"
+                      subtitle={item?.specifications.power}
+                    />
+                    <SpecificationsActives
+                      title="RPM:"
+                      subtitle={item?.specifications.rpm}
+                    />
+                  </ContainerCard>
+                  <ContainerCard title="Métricas">
+                    <MetricsInformations
+                      title="Data da Ultima Coleta:"
+                      subtitle={item.metrics.lastUptimeAt}
+                    />
+                    <MetricsInformations
+                      title="Total de Coletas:"
+                      subtitle={item.metrics.totalCollectsUptime}
+                    />
+                    <MetricsInformations
+                      title="Total de Horas de Coletas:"
+                      subtitle={item.metrics.totalUptime.toFixed(2)}
+                    />
+                  </ContainerCard>
+                </li>
+              ))}{" "}
+            </ul>
+          )}
+        </S.ContainerInformations>
+
+        <div>
+          {!data ? (
+            <Loading key={props} />
+          ) : (
+            <ul>
+              {[data].map((item) => (
+                <li key={item.id}>
+                  <ImageActive
+                    src={item?.image}
+                    alt={`Imagem da ${item.name} `}
+                  />
+                </li>
+              ))}{" "}
+            </ul>
+          )}
+        </div>
+      </S.Container>
+    </>
   );
 };
 export default Actives;
