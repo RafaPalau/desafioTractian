@@ -7,14 +7,22 @@ import Loading from "../../components/loading";
 
 interface IActivesProps {
   id: number;
-  sensors: string;
+  sensors: Array<string>;
   model: string;
   status: string;
   healthscore: number;
   name: string;
   image: string;
-  specifications: object;
-  matrics: object;
+  metrics: {
+    totalCollectsUptime: number;
+    totalUptime: number;
+    lastUptimeAt: string;
+  };
+  specifications: {
+    maxTemp: number;
+    rpm: number | null;
+    power: number;
+  };
   unitId: number;
   companyId: number;
 }
@@ -56,25 +64,34 @@ const Actives: React.FC = (props) => {
         />
       </ContentHeader>
       {!data ? (
-         <Loading key={props} />
+        <Loading key={props} />
       ) : (
         <ul>
           {[data].map((item) => (
             <li key={item.id}>
               <h1>{item?.name}</h1>
               <p>Id companhia: {item?.companyId}</p>
-              <p>Saude: {item?.healthscore}</p>
-              <p>Metricas {item.matrics}</p>
+              <p> Saúde em %: {item?.healthscore}</p>
+              <p>Data da Ultima Coleta Uptime {item.metrics.lastUptimeAt}</p>
+              <p>Total de Coletas: {item.metrics.totalCollectsUptime}</p>
+              <p>Total de Horas de Coletas: {item.metrics.totalUptime.toFixed(2)}</p>
               <p>modelo: {item?.model}</p>
               <p>Nome Sensor: {item?.sensors}</p>
-              {/* <p>{item?.specifications}</p> */}
-              <p>Status: {item?.status}</p>
+              <p>maxTemp: {item?.specifications.maxTemp}</p>
+              <p>Power: {item?.specifications.power}</p>
+              <p>RPM: {item?.specifications.rpm}</p>
+              <p> Estado atual: {item?.status}</p>
               <p>Unidade: {item?.unitId}</p>
-              <img style={{ width: "300px" }} src={item?.image} alt={`Imagem da ${item.image}`} />
+              <img
+                style={{ width: "300px" }}
+                src={item?.image}
+                alt={`Imagem da ${item.image}`}
+              />
             </li>
           ))}{" "}
         </ul>
       )}
+
     </S.Container>
   );
 };
