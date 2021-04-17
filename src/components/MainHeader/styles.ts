@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import ToggleComponent from "../Toggle";
 
 export const Container = styled.div`
   grid-area: MH;
@@ -13,7 +14,7 @@ export const Container = styled.div`
 export const Profile = styled.div`
   display: flex;
   flex-direction: column;
-  
+
   img {
     margin: 0 auto;
     border-radius: 50%;
@@ -22,5 +23,7 @@ export const Profile = styled.div`
 
   color: ${(props) => props.theme.colors.white};
 `;
+
+
 export const Welcome = styled.h3``;
 export const UserName = styled.span``;
