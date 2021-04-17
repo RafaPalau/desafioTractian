@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div`
 display: flex;
+flex-direction: column;
 
 justify-content: center;
 
@@ -16,5 +17,6 @@ justify-content: center;
 
 export const ContainerInformations = styled.section`
 width: 100%;
+
 
 `;

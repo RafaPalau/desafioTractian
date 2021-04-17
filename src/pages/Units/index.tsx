@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 import ContentHeader from "../../components/ContentHeader";
-import SelectInput from "../../components/SelectInput";
 import axios, { AxiosResponse } from "axios";
 
 import * as S from "./styles";
 import Loading from "../../components/loading";
-
+import logo from '../../assets/logo.jpg'
 interface IUnitsProps {
   id: number;
   name: string;
@@ -13,50 +12,29 @@ interface IUnitsProps {
 }
 
 const Units: React.FC = (props) => {
-  const [data, setData] = useState<IUnitsProps>();
-  console.log(data);
-  const [unitSelected, setUnitSelected] = useState<string>("1");
+  const [data, setData] = useState<IUnitsProps[]>([]);
 
   useEffect(() => {
     axios
-      .get(
-        `https://my-json-server.typicode.com/tractian/fake-api/units/${unitSelected}`
-      )
+      .get("https://my-json-server.typicode.com/tractian/fake-api/units/")
       .then((response: AxiosResponse) => {
         setData(response.data);
       });
-  }, [unitSelected]);
-
-  const options = [
-    {
-      value: "1",
-      label: "Unidade Jaguar",
-    },
-    {
-      value: "2",
-      label: "Unidade Tobias",
-    },
-  ];
+  }, []);
 
   return (
     <S.Container>
       <ContentHeader title="Unidades" lineColor="#f3c52e">
-        <SelectInput
-          options={options}
-          onChange={(event) => setUnitSelected(event.target.value)}
-        />
+       <span></span>
       </ContentHeader>
       {!data ? (
-        <>
-          <Loading key={props} />
-        </>
+        <Loading key={props} />
       ) : (
-        <div>
-          {" "}
-          {[data].map((item) => (
-            <h1 key={item.id}>{item?.name}</h1>
-          ))}{" "}
-        </div>
+        <S.ContainerCardsUnits>
+          {data.map((item) => (
+            <S.CardUnit key={item.id}>{item?.name}</S.CardUnit>
+          ))}
+        </S.ContainerCardsUnits>
       )}
     </S.Container>
   );

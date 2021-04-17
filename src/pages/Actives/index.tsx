@@ -67,75 +67,74 @@ const Actives: React.FC = (props) => {
         />
       </ContentHeader>
 
-      <S.Container>
-        <S.ContainerInformations>
-          {!data ? (
-            <Loading key={props} />
-          ) : (
-            <ul>
-              {[data].map((item) => (
-                <li key={item.id}>
-                  <h1>{item?.name}</h1>
-                  <p>Id companhia: {item?.companyId}</p>
-                  <p> Saúde em %: {item?.healthscore}</p>
+      {!data ? (
+        <Loading key={props} />
+      ) : (
+        <S.Container>
+          <div>
+            {[data].map((item) => (
+              <h1>{item?.name}</h1>
+            ))}
+          </div>
 
-                  <p>modelo: {item?.model}</p>
-                  <p>Nome Sensor: {item?.sensors}</p>
+          <ContainerCard title="Métricas">
+            {[data].map((item) => (
+              <>
+                <ImageActive
+                  src={item?.image}
+                  alt={`Imagem da ${item.name} `}
+                />
 
-                  <p> Estado atual: {item?.status}</p>
-                  <p>Unidade: {item?.unitId}</p>
+                <p>Nome Sensor: {item?.sensors}</p>
+                <p>modelo: {item?.model}</p>
+                <MetricsInformations
+                  title="Data da Ultima Coleta:"
+                  subtitle={item.metrics.lastUptimeAt}
+                />
+                <MetricsInformations
+                  title="Total de Coletas:"
+                  subtitle={item.metrics.totalCollectsUptime}
+                />
+                <MetricsInformations
+                  title="Total de Horas de Coletas:"
+                  subtitle={item.metrics.totalUptime.toFixed(2)}
+                />
+              </>
+            ))}
+          </ContainerCard>
 
-                  <ContainerCard title="Especificações técnicas">
-                    <SpecificationsActives
-                      title="maxTemp:"
-                      subtitle={item?.specifications.maxTemp}
-                    />
-                    <SpecificationsActives
-                      title="Power:"
-                      subtitle={item?.specifications.power}
-                    />
-                    <SpecificationsActives
-                      title="RPM:"
-                      subtitle={item?.specifications.rpm}
-                    />
-                  </ContainerCard>
-                  <ContainerCard title="Métricas">
-                    <MetricsInformations
-                      title="Data da Ultima Coleta:"
-                      subtitle={item.metrics.lastUptimeAt}
-                    />
-                    <MetricsInformations
-                      title="Total de Coletas:"
-                      subtitle={item.metrics.totalCollectsUptime}
-                    />
-                    <MetricsInformations
-                      title="Total de Horas de Coletas:"
-                      subtitle={item.metrics.totalUptime.toFixed(2)}
-                    />
-                  </ContainerCard>
-                </li>
-              ))}{" "}
-            </ul>
-          )}
-        </S.ContainerInformations>
+          <S.ContainerInformations>
+            {[data].map((item) => (
+              <ContainerCard title="Condição">
+                <p> Saúde: {item?.healthscore}</p>
+                <p> Estado: {item?.status} </p>
+              </ContainerCard>
+            ))}
+          </S.ContainerInformations>
 
-        <div>
-          {!data ? (
-            <Loading key={props} />
-          ) : (
-            <ul>
-              {[data].map((item) => (
-                <li key={item.id}>
-                  <ImageActive
-                    src={item?.image}
-                    alt={`Imagem da ${item.name} `}
-                  />
-                </li>
-              ))}{" "}
-            </ul>
-          )}
-        </div>
-      </S.Container>
+          <S.ContainerInformations>
+            {[data].map((item) => (
+              <ContainerCard title="Especificações técnicas">
+                <SpecificationsActives
+                  title="maxTemp:"
+                  subtitle={item?.specifications.maxTemp}
+                />
+                <SpecificationsActives
+                  title="Power:"
+                  subtitle={item?.specifications.power}
+                />
+                <SpecificationsActives
+                  title="RPM:"
+                  subtitle={item?.specifications.rpm}
+                />
+              </ContainerCard>
+            ))}
+          </S.ContainerInformations>
+          
+        </S.Container>
+
+
+      )}
     </>
   );
 };

@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
 import ContentHeader from "../../components/ContentHeader";
-import SelectInput from "../../components/SelectInput";
-
 import axios, { AxiosResponse } from "axios";
 
 import * as S from "./styles";
@@ -13,37 +11,31 @@ interface ICompaniesProps {
 }
 
 const Companys: React.FC = (props) => {
-  const [data, setData] = useState<ICompaniesProps>();
+  const [data, setData] = useState<ICompaniesProps[]>([]);
 
   useEffect(() => {
     axios
-      .get("https://my-json-server.typicode.com/tractian/fake-api/companies")
+      .get("https://my-json-server.typicode.com/tractian/fake-api/companies/")
       .then((response: AxiosResponse) => {
         setData(response.data);
       });
   }, []);
-
-  const options = [
-    {
-      value: "Empresa",
-      label: "Empresa Teste",
-    },
-  ];
   return (
     <S.Container>
       <ContentHeader title="Empresas" lineColor="#48d648">
-        <SelectInput
-          options={options}
-          onChange={() => {}}
-        />
+        <span></span>
       </ContentHeader>
 
       {!data ? (
-        <Loading key={props} />
+        <Loading />
       ) : (
         <div>
-          {[data].map((item) => (
-            <h1 key={item.id}>{item?.name}</h1>
+          {console.log(data)}
+          {data.map((item) => (
+            <S.CardCompanies>
+              <p>Nome: {item?.name}</p>
+              <p>Identificação: {item?.id}</p>
+            </S.CardCompanies>
           ))}{" "}
         </div>
       )}
