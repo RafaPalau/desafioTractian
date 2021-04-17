@@ -1,50 +1,73 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<p align="center">
+ <h1>Desafio Front End Tractian</h1>
+</p>
 
-dados de acesso:
-email  "teste1@tractian.com"
-password === "1234"
+## 📋 Índice
+- [📋 Índice](#-índice)
+- [📖 Sobre](#-sobre)
+- [🖥 Preview](#-preview)
+- [🚀 Tecnologias utilizadas](#-tecnologias-utilizadas)
+  - [Front-End](#front-end)
+- [⌨ Como executar o projeto](#-como-executar-o-projeto)
+  - [🎲 Rodando o Sistema](#-rodando-o-sistema)
 
-## Available Scripts
 
-In the project directory, you can run:
+<h1> "Não saber não é motivo para não fazer, pelo contrário. É o primeiro passo 
+para ampliar suas habilidades" - Bruno Felix, CTO da TRACTIAN. </h1>
 
-### `yarn start`
+---
+## 📖 Sobre
+Construir uma aplicação que mostre todos os dados e ações possíveis que utilizam a API criada no desafio back-end.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Link para testar o projeto: 
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+---
+## 🖥 Preview
 
-### `yarn test`
+<p align="center">
+ <img src="Aqui vai algumas imagens do projeto" width="700" >
+</p>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
+## 🚀 Tecnologias utilizadas
 
-### `yarn build`
+O projeto foi desenvolvido utilizando as seguintes tecnologias:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Front-End
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+ - [React](https://reactjs.org/)
+ - [Typescript](https://www.typescriptlang.org/)
+ - [Axios](https://github.com/axios/axios)
+ - [React-Router-Dom](https://reactrouter.com/web/guides/quick-start)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `yarn eject`
+## ⌨ Como executar o projeto
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Antes de começar, certifique-se que tenha o [Node.js](https://nodejs.org/en/) instalado. 
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### 🎲 Rodando o Sistema
+```bash
+ # Vá para a pasta do projeto
+$ cd desafioTractian
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+# Instale as dependências
+$ npm install # Execute a aplicação em modo de desenvolvimento
+# ou
+$ yarn
 
-## Learn More
+# Inicie o Servidor local 
+$ yarn
+# ou
+$ npm run start
+# O servidor iniciara na porta:3000 - acesse http://localhost:3000
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+# Para acessar utilize o usuário teste:
+#dados de acesso:
+email:  "teste1@tractian.com"
+password: "1234"
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
+
