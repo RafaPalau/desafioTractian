@@ -50,8 +50,9 @@ Antes de começar, certifique-se que tenha o [Node.js](https://nodejs.org/en/) i
 
 ### 🎲 Rodando o Sistema
 ```bash
- # Vá para a pasta do projeto
-$ cd desafioTractian
+# Faça download desse repositório
+# Vá para a pasta do projeto
+$ cd desafioTractian-master
 
 # Instale as dependências
 $ npm install # Execute a aplicação em modo de desenvolvimento
