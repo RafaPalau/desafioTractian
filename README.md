@@ -2,6 +2,10 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+dados de acesso:
+email  "teste1@tractian.com"
+password === "1234"
+
 ## Available Scripts
 
 In the project directory, you can run:

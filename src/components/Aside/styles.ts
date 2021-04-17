@@ -29,12 +29,31 @@ export const MenuItemLink = styled.a`
   transition: opacity 0.3s;
   margin: 7px 0;
   display: flex;
-  align-items:center;
+  align-items: center;
   &:hover {
     opacity: 0.5;
   }
 
-  > svg{
+  > svg {
+    font-size: 20px;
+    margin-right: 7px;
+  }
+`;
+
+export const MenuItemButton = styled.button`
+  font-size: 16px;
+  color: ${(props) => props.theme.colors.info};
+  border: none;
+  background: none;
+  transition: opacity 0.3s;
+  margin: 7px 0;
+  display: flex;
+  align-items: center;
+  &:hover {
+    opacity: 0.5;
+  }
+
+  > svg {
     font-size: 20px;
     margin-right: 7px;
   }

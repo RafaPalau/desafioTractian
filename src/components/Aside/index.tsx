@@ -11,7 +11,10 @@ import { RiCommunityLine } from "react-icons/ri";
 
 import logo from "../../assets/logo.jpg";
 
+import {useAuth} from '../../hooks/auth'
+
 const Aside: React.FC = () => {
+  const { signOut} = useAuth();
   return (
     <S.Container>
       <S.Header>
@@ -19,7 +22,7 @@ const Aside: React.FC = () => {
       </S.Header>
 
       <S.MenuContainer>
-        <S.MenuItemLink href="/actives">
+        <S.MenuItemLink href="/">
           <AiOutlineLineChart />
           Ativos
         </S.MenuItemLink>
@@ -33,10 +36,10 @@ const Aside: React.FC = () => {
         <S.MenuItemLink href="users">
           <AiOutlineUsergroupDelete /> Usuários
         </S.MenuItemLink>
-        <S.MenuItemLink href="#">
+        <S.MenuItemButton onClick={signOut}>
           <MdExitToApp />
           Sair
-        </S.MenuItemLink>
+        </S.MenuItemButton>
       </S.MenuContainer>
     </S.Container>
   );

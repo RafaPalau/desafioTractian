@@ -10,6 +10,7 @@ import Users from "../pages/Users";
 const AppRoutes: React.FC = () => (
   <Layout>
     <Switch>
+    <Route path="/" exact component={Actives} />
       <Route path="/actives" exact component={Actives} />
       <Route path="/units" exact component={Units} />
       <Route path="/empresas" exact component={Empresas} />

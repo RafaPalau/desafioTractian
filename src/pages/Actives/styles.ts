@@ -16,5 +16,5 @@ justify-content: center;
 
 export const ContainerInformations = styled.section`
 width: 100%;
-border: 1px solid red;
+
 `;
