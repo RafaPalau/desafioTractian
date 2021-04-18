@@ -1,74 +1,79 @@
+# Projeto
+## _Desafio Front End Tractian_
 
-<p align="center">
- <h1>Desafio Front End Tractian</h1>
-</p>
-
-## 📋 Índice
-- [📋 Índice](#-índice)
-- [📖 Sobre](#-sobre)
-- [🖥 Preview](#-preview)
-- [🚀 Tecnologias utilizadas](#-tecnologias-utilizadas)
-  - [Front-End](#front-end)
-- [⌨ Como executar o projeto](#-como-executar-o-projeto)
-  - [🎲 Rodando o Sistema](#-rodando-o-sistema)
-
-
-<h1> "Não saber não é motivo para não fazer, pelo contrário. É o primeiro passo 
-para ampliar suas habilidades" - Bruno Felix, CTO da TRACTIAN. </h1>
-
+"Não saber não é motivo para não fazer, pelo contrário. É o primeiro passo 
+para ampliar suas habilidades" - Bruno Felix, CTO da [https://tractian.com/][df1].
 ---
-## 📖 Sobre
+## Sobre
 Construir uma aplicação que mostre todos os dados e ações possíveis que utilizam a API criada no desafio back-end.
 
-Link para testar o projeto: 
+---
+## Link para testar o projeto: 
+https://desafiotractian.herokuapp.com/
+
+![Print](image1.png)
+![Print](image2.png)
+## Imagens do projeto
+
+##### Dados de acesso
+Usuário
+```sh
+teste1@tractian.com
+```
+Senha
+```sh
+1234
+```
+
 
 ---
-## 🖥 Preview
 
-<p align="center">
- <img src="Aqui vai algumas imagens do projeto" width="700" >
-</p>
-
----
-## 🚀 Tecnologias utilizadas
-
-O projeto foi desenvolvido utilizando as seguintes tecnologias:
-
-### Front-End
-
- - [React](https://reactjs.org/)
+## Tecnologias utilizadas
+ - [React](https://reactjs.org/) 
  - [Typescript](https://www.typescriptlang.org/)
  - [Axios](https://github.com/axios/axios)
  - [React-Router-Dom](https://reactrouter.com/web/guides/quick-start)
+ -  [styled-components](https://styled-components.com/)
+ - [moment](https://momentjs.com/)
+ -  [highcharts](https://www.highcharts.com/) 
+-  [antd](https://ant.design/docs/react/introduce) 
 
 ---
 
-## ⌨ Como executar o projeto
+## Installation
 
-Antes de começar, certifique-se que tenha o [Node.js](https://nodejs.org/en/) instalado. 
-
-
-### 🎲 Rodando o Sistema
-```bash
-# Faça download desse repositório
-# Vá para a pasta do projeto
-$ cd desafioTractian-master
-
-# Instale as dependências
-$ npm install # Execute a aplicação em modo de desenvolvimento
-# ou
-$ yarn
-
-# Inicie o Servidor local 
-$ yarn
-# ou
-$ npm run start
-# O servidor iniciara na porta:3000 - acesse http://localhost:3000
-
-# Para acessar utilize o usuário teste:
-#dados de acesso:
-email:  "teste1@tractian.com"
-password: "1234"
-
+Antes de começar, certifique-se que tenha o [Node.js](https://nodejs.org/en/) instalado. Abra o terminal e digite o comando:
+```sh
+node -v
+```
+Será retornado uma informação como:
+```sh
+v14.16.1
 ```
 
+
+Após clonar ou baixar esse repositório.
+Entre na pasta e instale as dependências. 
+
+```sh
+cd desafioTractian-master
+yarn install
+ou
+npm install 
+```
+
+Para rodar o projeto digite 
+```sh
+yarn dev
+```
+ Se uma página do navegador não abrir automaticamente, acesse o projeto clicando  [AQUI](http://localhost:3000/)
+
+---
+#### Adicione as credenciais de acesso. 
+Login: teste1@tractian.com
+Senha: 1234
+---
+
+## Licensa
+MIT
+**Free Software, Yeah!**

@@ -71,6 +71,7 @@ const Actives: React.FC = (props) => {
     title: {
       text: `Saúde ${[data?.healthscore]}%`,
       style: { color: "#ffe23d", fontSize: "24px" },
+    
     },
     yAxis: {
       title: {
@@ -80,7 +81,8 @@ const Actives: React.FC = (props) => {
     colors: ["#ffe23d", "transparent"],
     chart: {
       height: "300px",
-      width: 300,
+      width: 250,
+    
     },
 
     series: [
@@ -103,7 +105,7 @@ const Actives: React.FC = (props) => {
     colors: ["#ff3d3d"],
     chart: {
       height: "300px",
-      width: 300,
+      width: 250,
     },
     series: [
       {
@@ -125,7 +127,7 @@ const Actives: React.FC = (props) => {
     colors: ["#000000"],
     chart: {
       height: "300px",
-      width: 300,
+      width: 250,
     },
     series: [
       {
@@ -148,7 +150,7 @@ const Actives: React.FC = (props) => {
     colors: ["#00b100"],
     chart: {
       height: "300px",
-      width: 300,
+      width: 250,
     },
     series: [
       {

@@ -34,7 +34,6 @@ justify-content: space-around;
 export const ContainerCondition = styled.div`
 display: flex;
 flex-wrap: wrap;
-
 `;
 
 
@@ -57,6 +56,10 @@ export const ContainerImageEquip = styled.div`
 width: 300px;
 height: 400px;
 
+@media(max-width: 500px){
+  width: 200px;
+  height: 280px;
+}
 `;
 
 
