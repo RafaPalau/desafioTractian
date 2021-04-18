@@ -1,8 +1,8 @@
 # Projeto
 ## _Desafio Front End Tractian_
 
-"Não saber não é motivo para não fazer, pelo contrário. É o primeiro passo 
-para ampliar suas habilidades" - Bruno Felix, CTO da [https://tractian.com/][df1].
+### "Não saber não é motivo para não fazer, pelo contrário. É o primeiro passo 
+### para ampliar suas habilidades" - Bruno Felix, CTO da [Tractian](https://tractian.com/)
 ---
 ## Sobre
 Construir uma aplicação que mostre todos os dados e ações possíveis que utilizam a API criada no desafio back-end.
@@ -11,9 +11,11 @@ Construir uma aplicação que mostre todos os dados e ações possíveis que uti
 ## Link para testar o projeto: 
 https://desafiotractian.herokuapp.com/
 
-![Print](image1.png)
-![Print](image2.png)
 ## Imagens do projeto
+![Print](image1.png)
+---
+![Print](image2.png)
+
 
 ##### Dados de acesso
 Usuário
@@ -69,11 +71,15 @@ yarn dev
  Se uma página do navegador não abrir automaticamente, acesse o projeto clicando  [AQUI](http://localhost:3000/)
 
 ---
-#### Adicione as credenciais de acesso. 
-Login: teste1@tractian.com
-Senha: 1234
+#### Adicione as credenciais de acesso.
+```sh
+Usuário teste1@tractian.com
+Senha 1234
+
+```
+
 ---
 
-## Licensa
+### Licensa
 MIT
 **Free Software, Yeah!**
