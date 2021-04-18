@@ -59,9 +59,9 @@ Entre na pasta e instale as dependências.
 
 ```sh
 cd desafioTractian-master
-yarn install
+npm install
 ou
-npm install 
+yarn install 
 ```
 
 Para rodar o projeto digite 
