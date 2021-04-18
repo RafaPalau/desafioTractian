@@ -66,6 +66,8 @@ npm install
 
 Para rodar o projeto digite 
 ```sh
+npm sstart
+ou
 yarn dev
 ```
  Se uma página do navegador não abrir automaticamente, acesse o projeto clicando  [AQUI](http://localhost:3000/)
