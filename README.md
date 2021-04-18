@@ -35,14 +35,14 @@ Senha
  - [Typescript](https://www.typescriptlang.org/)
  - [Axios](https://github.com/axios/axios)
  - [React-Router-Dom](https://reactrouter.com/web/guides/quick-start)
- -  [styled-components](https://styled-components.com/)
- - [moment](https://momentjs.com/)
- -  [highcharts](https://www.highcharts.com/) 
--  [antd](https://ant.design/docs/react/introduce) 
+ -  [Styled-components](https://styled-components.com/)
+ - [Moment](https://momentjs.com/)
+ -  [Highcharts](https://www.highcharts.com/) 
+-  [Antd](https://ant.design/docs/react/introduce) 
 
 ---
 
-## Installation
+## Instalação
 
 Antes de começar, certifique-se que tenha o [Node.js](https://nodejs.org/en/) instalado. Abra o terminal e digite o comando:
 ```sh
@@ -66,6 +66,8 @@ npm install
 
 Para rodar o projeto digite 
 ```sh
+npm start
+ou
 yarn dev
 ```
  Se uma página do navegador não abrir automaticamente, acesse o projeto clicando  [AQUI](http://localhost:3000/)
