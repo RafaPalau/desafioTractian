@@ -3,7 +3,7 @@ import ContentHeader from "../../components/ContentHeader";
 import axios, { AxiosResponse } from "axios";
 
 import * as S from "./styles";
-import Loading from "../../components/loading";
+import { Spin } from "antd";
 
 interface ICompaniesProps {
   id: number;
@@ -27,7 +27,7 @@ const Companys: React.FC = (props) => {
       </ContentHeader>
 
       {!data ? (
-        <Loading />
+        <Spin tip="Carregando..." />
       ) : (
         <div>
           {console.log(data)}

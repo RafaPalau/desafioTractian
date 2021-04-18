@@ -1,13 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import ContentHeader from "../../components/ContentHeader";
 import SelectInput from "../../components/SelectInput";
 import axios, { AxiosResponse } from "axios";
 import * as S from "./styles";
-import Loading from "../../components/loading";
+import { Spin } from "antd";
 import ImageActive from "../../components/ImageActive";
-import MetricsInformations from "../../components/MetricsInformations";
-import SpecificationsActives from "../../components/SpecificationsActives";
+
 import ContainerCard from "../../components/ContainerCard";
+
+import { MdDateRange, MdCollectionsBookmark } from "react-icons/md";
+import { IoMdClock } from "react-icons/io";
+import { GoAlert } from "react-icons/go";
+
+import Highcharts from "highcharts";
+import HighchartsReact from "highcharts-react-official";
+import moment from "moment";
 
 interface IActivesProps {
   id: number;
@@ -34,6 +41,7 @@ interface IActivesProps {
 const Actives: React.FC = (props) => {
   const [data, setData] = useState<IActivesProps>();
   const [sensorSelected, setSensorSelected] = useState<string>("1");
+  const [status, setStatus] = useState("");
 
   const sensors = [
     { value: "1", label: "GSJ1535" },
@@ -55,8 +63,130 @@ const Actives: React.FC = (props) => {
       )
       .then((response: AxiosResponse) => {
         setData(response.data);
+        setStatus(response.data?.status);
       });
   }, [sensorSelected]);
+
+  const healthscore: Highcharts.Options = {
+    title: {
+      text: `Saúde ${[data?.healthscore]}%`,
+      style: { color: "#ffe23d", fontSize: "24px" },
+    },
+    yAxis: {
+      title: {
+        text: "Saúde",
+      },
+    },
+    colors: ["#ffe23d", "transparent"],
+    chart: {
+      height: "300px",
+      width: 300,
+    },
+
+    series: [
+      {
+        type: "pie",
+        data: [[data?.healthscore], [100 - Number([data?.healthscore])]],
+      },
+    ],
+  };
+  const temp: Highcharts.Options = {
+    title: {
+      text: `Temperatura ${[data?.specifications.maxTemp]} °C`,
+      style: { color: "red", fontSize: "24px" },
+    },
+    yAxis: {
+      title: {
+        text: "Temperatura máxima",
+      },
+    },
+    colors: ["#ff3d3d"],
+    chart: {
+      height: "300px",
+      width: 300,
+    },
+    series: [
+      {
+        type: "column",
+        data: [[data?.specifications.maxTemp]],
+      },
+    ],
+  };
+  const power: Highcharts.Options = {
+    title: {
+      text: `Power ${[data?.specifications.power]}`,
+      style: { color: "black", fontSize: "24px" },
+    },
+    yAxis: {
+      title: {
+        text: "Power",
+      },
+    },
+    colors: ["#000000"],
+    chart: {
+      height: "300px",
+      width: 300,
+    },
+    series: [
+      {
+        type: "column",
+        data: [[data?.specifications.power]],
+      },
+    ],
+  };
+  const rpm: Highcharts.Options = {
+    title: {
+      text: `RPM ${[data?.specifications.rpm]}`,
+      style: { color: "green", fontSize: "24px" },
+    },
+    yAxis: {
+      title: {
+        text: "RPM",
+        style: { color: "green" },
+      },
+    },
+    colors: ["#00b100"],
+    chart: {
+      height: "300px",
+      width: 300,
+    },
+    series: [
+      {
+        type: "column",
+        data: [[data?.specifications.rpm]],
+      },
+    ],
+  };
+
+  const statusImage = useMemo(() => {
+    if (status === "inAlert") {
+      return (
+        <S.TextStatus>
+          {" "}
+          <GoAlert style={{ color: "red", fontSize: "24px" }} />{" "}
+          <span>Em Alerta</span>{" "}
+        </S.TextStatus>
+      );
+    } else if (status === "inDowntime") {
+      return (
+        <S.TextStatus>
+          {" "}
+          <GoAlert style={{ color: "green", fontSize: "24px" }} />{" "}
+          <span>Em Operação</span>{" "}
+        </S.TextStatus>
+      );
+    } else if (status === "inOperation") {
+      return (
+        <S.TextStatus>
+          {" "}
+          <GoAlert style={{ color: "yellow", fontSize: "24px" }} />{" "}
+          <span>Em Parada</span>{" "}
+        </S.TextStatus>
+      );
+    } else {
+      return <S.TextStatus>Estado não identificado</S.TextStatus>;
+    }
+  }, [status]);
 
   return (
     <>
@@ -68,72 +198,80 @@ const Actives: React.FC = (props) => {
       </ContentHeader>
 
       {!data ? (
-        <Loading key={props} />
+        <Spin tip="Carregando..." />
       ) : (
         <S.Container>
           <div>
             {[data].map((item) => (
-              <h1>{item?.name}</h1>
+              <h2>{item?.name} </h2>
             ))}
           </div>
 
           <ContainerCard title="Métricas">
             {[data].map((item) => (
-              <>
-                <ImageActive
-                  src={item?.image}
-                  alt={`Imagem da ${item.name} `}
-                />
+              <S.ContainerMetricas>
+                <S.ContainerImageEquip>
+                  <ImageActive
+                    src={item?.image}
+                    alt={`Imagem da ${item.name} `}
+                  />
+                </S.ContainerImageEquip>
 
-                <p>Nome Sensor: {item?.sensors}</p>
-                <p>modelo: {item?.model}</p>
-                <MetricsInformations
-                  title="Data da Ultima Coleta:"
-                  subtitle={item.metrics.lastUptimeAt}
-                />
-                <MetricsInformations
-                  title="Total de Coletas:"
-                  subtitle={item.metrics.totalCollectsUptime}
-                />
-                <MetricsInformations
-                  title="Total de Horas de Coletas:"
-                  subtitle={item.metrics.totalUptime.toFixed(2)}
-                />
-              </>
+                <div>
+                  <S.TextStatus>Nome Sensor: {item?.sensors}</S.TextStatus>
+                  <S.TextStatus>modelo: {item?.model}</S.TextStatus>
+
+                  <S.TextStatus>
+                    <MdDateRange />
+                    Ultima Coleta:{" "}
+                    {moment(item.metrics.lastUptimeAt).format("DD/MM/YYYY")}
+                  </S.TextStatus>
+
+                  <S.TextStatus>
+                    <MdCollectionsBookmark />
+                    Total Coletas: {item.metrics.totalCollectsUptime}
+                  </S.TextStatus>
+
+                  <S.TextStatus>
+                    <IoMdClock />
+                    Horas de Coletas: {item.metrics.totalUptime.toFixed(2)}
+                  </S.TextStatus>
+
+                  <span>{statusImage} </span>
+                </div>
+              </S.ContainerMetricas>
             ))}
           </ContainerCard>
 
           <S.ContainerInformations>
             {[data].map((item) => (
               <ContainerCard title="Condição">
-                <p> Saúde: {item?.healthscore}</p>
-                <p> Estado: {item?.status} </p>
+                <S.ContainerCondition>
+                  <HighchartsReact
+                    highcharts={Highcharts}
+                    options={healthscore}
+                    {...props}
+                  />
+                  <HighchartsReact
+                    highcharts={Highcharts}
+                    options={temp}
+                    {...props}
+                  />
+                  <HighchartsReact
+                    highcharts={Highcharts}
+                    options={power}
+                    {...props}
+                  />
+                  <HighchartsReact
+                    highcharts={Highcharts}
+                    options={rpm}
+                    {...props}
+                  />
+                </S.ContainerCondition>
               </ContainerCard>
             ))}
           </S.ContainerInformations>
-
-          <S.ContainerInformations>
-            {[data].map((item) => (
-              <ContainerCard title="Especificações técnicas">
-                <SpecificationsActives
-                  title="maxTemp:"
-                  subtitle={item?.specifications.maxTemp}
-                />
-                <SpecificationsActives
-                  title="Power:"
-                  subtitle={item?.specifications.power}
-                />
-                <SpecificationsActives
-                  title="RPM:"
-                  subtitle={item?.specifications.rpm}
-                />
-              </ContainerCard>
-            ))}
-          </S.ContainerInformations>
-          
         </S.Container>
-
-
       )}
     </>
   );

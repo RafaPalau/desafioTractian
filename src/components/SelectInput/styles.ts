@@ -7,5 +7,6 @@ export const Container = styled.div`
   border-radius: 5px;
 
   margin-left: 7px;
+  color: black;
 }
 `;

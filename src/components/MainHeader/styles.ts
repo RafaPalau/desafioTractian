@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import ToggleComponent from "../Toggle";
 
 export const Container = styled.div`
   grid-area: MH;

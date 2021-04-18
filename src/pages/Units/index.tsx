@@ -3,8 +3,7 @@ import ContentHeader from "../../components/ContentHeader";
 import axios, { AxiosResponse } from "axios";
 
 import * as S from "./styles";
-import Loading from "../../components/loading";
-import logo from '../../assets/logo.jpg'
+import { Spin } from "antd";
 interface IUnitsProps {
   id: number;
   name: string;
@@ -28,7 +27,7 @@ const Units: React.FC = (props) => {
        <span></span>
       </ContentHeader>
       {!data ? (
-        <Loading key={props} />
+         <Spin tip="Carregando..." />
       ) : (
         <S.ContainerCardsUnits>
           {data.map((item) => (
