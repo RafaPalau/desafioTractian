@@ -66,7 +66,7 @@ npm install
 
 Para rodar o projeto digite 
 ```sh
-npm sstart
+npm start
 ou
 yarn dev
 ```
