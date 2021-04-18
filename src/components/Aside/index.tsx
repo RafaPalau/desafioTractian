@@ -6,7 +6,7 @@ import { MdExitToApp, MdClose, MdMenu } from "react-icons/md";
 import { SiUnity } from "react-icons/si";
 import { RiCommunityLine } from "react-icons/ri";
 
-import logo from "../../assets/logo.jpg";
+import logo from "../../assets/logo.png";
 import Toggle from "../Toggle";
 
 import { useAuth } from "../../hooks/auth";

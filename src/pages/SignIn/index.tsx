@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import * as S from "./styles";
 import Input from "../../components/Input";
 
-import logoImg from "../../assets/logo.jpg";
+import logoImg from "../../assets/logo.png";
 import Button from "../../components/Button";
 
 import {useAuth} from '../../hooks/auth'
