@@ -35,10 +35,10 @@ Senha
  - [Typescript](https://www.typescriptlang.org/)
  - [Axios](https://github.com/axios/axios)
  - [React-Router-Dom](https://reactrouter.com/web/guides/quick-start)
- -  [styled-components](https://styled-components.com/)
- - [moment](https://momentjs.com/)
- -  [highcharts](https://www.highcharts.com/) 
--  [antd](https://ant.design/docs/react/introduce) 
+ -  [Styled-components](https://styled-components.com/)
+ - [Moment](https://momentjs.com/)
+ -  [Highcharts](https://www.highcharts.com/) 
+-  [Antd](https://ant.design/docs/react/introduce) 
 
 ---
 
