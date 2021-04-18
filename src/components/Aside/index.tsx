@@ -13,7 +13,6 @@ import { useAuth } from "../../hooks/auth";
 import { useTheme } from "../../hooks/themes";
 
 const Aside: React.FC = () => {
-
   const { signOut } = useAuth();
   const { toggleTheme, theme } = useTheme();
 
@@ -21,14 +20,13 @@ const Aside: React.FC = () => {
   const [darkTheme, setDarkTheme] = useState(() =>
     theme.title === "dark" ? true : false
   );
- 
+
   const handleToggleMenu = () => {
     setToggleMenuIsOpened(!toggleMenuIsOpened);
   };
   const handlechangeTheme = () => {
     setDarkTheme(!darkTheme);
-    toggleTheme()
-
+    toggleTheme();
   };
   return (
     <S.Container menuIsOpen={toggleMenuIsOpened}>
@@ -60,13 +58,13 @@ const Aside: React.FC = () => {
           Sair
         </S.MenuItemButton>
       </S.MenuContainer>
-      <S.ThemeToggleFooter  menuIsOpen={toggleMenuIsOpened}>
-      <Toggle
-        checked={darkTheme}
-        labelLeft="Light"
-        labelRight="Right"
-        onChange={handlechangeTheme}
-      />
+      <S.ThemeToggleFooter menuIsOpen={toggleMenuIsOpened}>
+        <Toggle
+          checked={darkTheme}
+          labelLeft="Light"
+          labelRight="Right"
+          onChange={handlechangeTheme}
+        />
       </S.ThemeToggleFooter>
     </S.Container>
   );
