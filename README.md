@@ -42,7 +42,7 @@ Senha
 
 ---
 
-## Installation
+## Instalação
 
 Antes de começar, certifique-se que tenha o [Node.js](https://nodejs.org/en/) instalado. Abra o terminal e digite o comando:
 ```sh
