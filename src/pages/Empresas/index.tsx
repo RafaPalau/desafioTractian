@@ -1,25 +1,35 @@
 import React, { useState, useEffect } from "react";
+import { Spin, Table } from "antd";
+import { EditTwoTone, CloseOutlined } from "@ant-design/icons";
+import api from "../../services/api";
 import ContentHeader from "../../components/ContentHeader";
-import axios, { AxiosResponse } from "axios";
+import { ICompaniesProps } from "../../models/interface";
 
 import * as S from "./styles";
-import { Spin } from "antd";
-
-interface ICompaniesProps {
-  id: number;
-  name: string;
-}
 
 const Companys: React.FC = (props) => {
   const [data, setData] = useState<ICompaniesProps[]>([]);
 
   useEffect(() => {
-    axios
-      .get("https://my-json-server.typicode.com/tractian/fake-api/companies/")
-      .then((response: AxiosResponse) => {
-        setData(response.data);
-      });
+    api.get("/companies/").then((response) => {
+      setData(response.data);
+    });
   }, []);
+
+  const columns = [
+    { title: "Nome", dataIndex: "name", key: "name" },
+    { title: "Id", dataIndex: "id", key: "id" },
+
+    {
+      title: "Editar",
+      render: () => <EditTwoTone />,
+    },
+    {
+      title: "Deletar",
+      render: () => <CloseOutlined />,
+    },
+  ];
+
   return (
     <S.Container>
       <ContentHeader title="Empresas" lineColor="#48d648">
@@ -27,17 +37,9 @@ const Companys: React.FC = (props) => {
       </ContentHeader>
 
       {!data ? (
-        <Spin tip="Carregando..." />
+        <Spin tip="Loading..." />
       ) : (
-        <div>
-          {console.log(data)}
-          {data.map((item) => (
-            <S.CardCompanies>
-              <p>Nome: {item?.name}</p>
-              <p>Identificação: {item?.id}</p>
-            </S.CardCompanies>
-          ))}{" "}
-        </div>
+        <Table columns={columns} dataSource={data} />
       )}
     </S.Container>
   );

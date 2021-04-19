@@ -11,7 +11,7 @@ export const Container = styled.div`
 `;
 
 export const Logo = styled.img`
-width: 200px;
+  width: 200px;
   display: flex;
   align-items: center;
   margin-bottom: 30px;
@@ -19,11 +19,11 @@ width: 200px;
 `;
 
 export const Form = styled.form`
-width: 300px;
-height: 300px;
-padding: 30px;
-border-radius: 10px;
-background-color: ${(props) => props.theme.colors.tertiary};
+  width: 300px;
+  height: 300px;
+  padding: 30px;
+  border-radius: 10px;
+  background-color: ${(props) => props.theme.colors.tertiary};
 `;
 
 export const FormTitle = styled.h1`

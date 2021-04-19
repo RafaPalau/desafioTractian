@@ -1,77 +1,37 @@
 import React, { useState, useEffect, useMemo } from "react";
-import ContentHeader from "../../components/ContentHeader";
-import SelectInput from "../../components/SelectInput";
-import axios, { AxiosResponse } from "axios";
-import * as S from "./styles";
 import { Spin } from "antd";
-import ImageActive from "../../components/ImageActive";
-
-import ContainerCard from "../../components/ContainerCard";
-
+import Highcharts from "highcharts";
+import HighchartsReact from "highcharts-react-official";
+import moment from "moment";
+import api from "../../services/api";
 import { MdDateRange, MdCollectionsBookmark } from "react-icons/md";
 import { IoMdClock } from "react-icons/io";
 import { GoAlert } from "react-icons/go";
 
-import Highcharts from "highcharts";
-import HighchartsReact from "highcharts-react-official";
-import moment from "moment";
-
-interface IActivesProps {
-  id: number;
-  sensors: Array<string>;
-  model: string;
-  status: string;
-  healthscore: number;
-  name: string;
-  image: string;
-  metrics: {
-    totalCollectsUptime: number;
-    totalUptime: number;
-    lastUptimeAt: string;
-  };
-  specifications: {
-    maxTemp: number;
-    rpm: number | null;
-    power: number;
-  };
-  unitId: number;
-  companyId: number;
-}
+import ContentHeader from "../../components/ContentHeader";
+import SelectInput from "../../components/SelectInput";
+import ImageActive from "../../components/ImageActive";
+import ContainerCard from "../../components/ContainerCard";
+import sensors from "../../utils/listSensors";
+import { IActivesProps } from "../../models/interface";
+import * as S from "./styles";
 
 const Actives: React.FC = (props) => {
   const [data, setData] = useState<IActivesProps>();
   const [sensorSelected, setSensorSelected] = useState<string>("1");
   const [status, setStatus] = useState("");
 
-  const sensors = [
-    { value: "1", label: "GSJ1535" },
-    { value: "2", label: "IBS1636" },
-    { value: "3", label: "JVC1134" },
-    { value: "4", label: "LZY5230" },
-    { value: "5", label: "NBX2120" },
-    { value: "6", label: "MOE1378" },
-    { value: "7", label: "MYS2173" },
-    { value: "8", label: "HPO6412" },
-    { value: "9", label: "BMS9149" },
-    { value: "10", label: "KBJ1010" },
-  ];
-
   useEffect(() => {
-    axios
-      .get(
-        `https://my-json-server.typicode.com/tractian/fake-api/assets/${sensorSelected}`
-      )
-      .then((response: AxiosResponse) => {
-        setData(response.data);
-        setStatus(response.data?.status);
-      });
+    api.get(`assets/${sensorSelected}`).then((response) => {
+      setData(response.data);
+      setStatus(response.data?.status);
+    });
   }, [sensorSelected]);
 
   const healthscore: Highcharts.Options = {
     title: {
       text: `Saúde ${[data?.healthscore]}%`,
       style: { color: "#ffe23d", fontSize: "24px" },
-    
     },
     yAxis: {
       title: {
@@ -82,7 +42,6 @@ const Actives: React.FC = (props) => {
     chart: {
       height: "300px",
       width: 250,
-    
     },
 
     series: [
@@ -193,7 +152,7 @@ const Actives: React.FC = (props) => {
   return (
     <>
       <ContentHeader title="Ativos" lineColor="#72B3F2">
-        <SelectInput
+        <SelectInput 
           options={sensors}
           onChange={(event) => setSensorSelected(event.target.value)}
         />

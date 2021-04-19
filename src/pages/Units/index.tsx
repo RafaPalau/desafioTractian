@@ -1,39 +1,42 @@
 import React, { useState, useEffect } from "react";
+import { Spin, Table } from "antd";
+import { EditTwoTone, CloseOutlined } from "@ant-design/icons";
 import ContentHeader from "../../components/ContentHeader";
-import axios, { AxiosResponse } from "axios";
-
+import { IUnitsProps } from "../../models/interface";
+import api from "../../services/api";
 import * as S from "./styles";
-import { Spin } from "antd";
-interface IUnitsProps {
-  id: number;
-  name: string;
-  companyId: number;
-}
 
 const Units: React.FC = (props) => {
   const [data, setData] = useState<IUnitsProps[]>([]);
 
   useEffect(() => {
-    axios
-      .get("https://my-json-server.typicode.com/tractian/fake-api/units/")
-      .then((response: AxiosResponse) => {
-        setData(response.data);
-      });
+    api.get("/units/").then((response) => {
+      setData(response.data);
+    });
   }, []);
+
+  const columns = [
+    { title: "Nome", dataIndex: "name", key: "name" },
+    { title: "Id", dataIndex: "id", key: "id" },
+    {
+      title: "Editar",
+      render: () => <EditTwoTone />,
+    },
+    {
+      title: "Deletar",
+      render: () => <CloseOutlined />,
+    },
+  ];
 
   return (
     <S.Container>
       <ContentHeader title="Unidades" lineColor="#f3c52e">
-       <span></span>
+        <span></span>
       </ContentHeader>
       {!data ? (
-         <Spin tip="Carregando..." />
+        <Spin tip="Loading..." />
       ) : (
-        <S.ContainerCardsUnits>
-          {data.map((item) => (
-            <S.CardUnit key={item.id}>{item?.name}</S.CardUnit>
-          ))}
-        </S.ContainerCardsUnits>
+        <Table columns={columns} dataSource={data} />
       )}
     </S.Container>
   );

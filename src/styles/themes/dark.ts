@@ -1,4 +1,4 @@
- // eslint-disable-next-line
+// eslint-disable-next-line
 export default {
   title: "dark",
 

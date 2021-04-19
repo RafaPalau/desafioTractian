@@ -1,4 +1,4 @@
-import styled, { keyframes} from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 const animate = keyframes`
 0% {
@@ -14,18 +14,16 @@ opacity: 1;
 }
 `;
 
-export const Container = styled.div`
-
-`;
+export const Container = styled.div``;
 export const CardUnit = styled.div`
-width: 300px;
-height: 100px;
-margin: 5px 7px;
-text-align: center;
-padding: 15px;
-border-radius: 10px;
-background-color: ${props => props.theme.colors.tertiary};
-animation: ${animate} 0.7s ease;
+  width: 300px;
+  height: 100px;
+  margin: 5px 7px;
+  text-align: center;
+  padding: 15px;
+  border-radius: 10px;
+  background-color: ${(props) => props.theme.colors.tertiary};
+  animation: ${animate} 0.7s ease;
   transition: all 0.3s;
   cursor: pointer;
 
@@ -33,10 +31,8 @@ animation: ${animate} 0.7s ease;
     opacity: 0.7;
     transform: translateX(10px);
   }
-
 `;
 export const ContainerCardsUnits = styled.div`
-display:flex;
-flex-wrap: wrap;
+  display: flex;
+  flex-wrap: wrap;
 `;
-

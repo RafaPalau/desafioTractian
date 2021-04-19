@@ -9,9 +9,8 @@ ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider>
       <AuthProvider>
-      <App />
+        <App />
       </AuthProvider>
-     
     </ThemeProvider>
   </React.StrictMode>,
   document.getElementById("root")

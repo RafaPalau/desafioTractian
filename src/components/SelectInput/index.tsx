@@ -14,7 +14,7 @@ defaultValue?: string | number;
 const SelectInput: React.FC<ISelectInputProps> = ({ options, onChange, defaultValue  }) => {
   return (
     <S.Container>
-      <select onChange={onChange} defaultValue={defaultValue}>
+      <select  onChange={onChange} defaultValue={defaultValue}>
         {options.map((option) => (
           <option value={option.value}> {option.label}</option>
         ))}

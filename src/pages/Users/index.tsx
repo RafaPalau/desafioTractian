@@ -1,22 +1,11 @@
 import React, { useState, useEffect } from "react";
-import ContentHeader from "../../components/ContentHeader";
 import axios, { AxiosResponse } from "axios";
-import * as S from "./styles";
-
 import "antd/dist/antd.css";
-import { AiFillCloseCircle, AiFillEdit } from "react-icons/ai";
-
 import { Table, Spin } from "antd";
-import {EditTwoTone, CloseOutlined } from '@ant-design/icons';
-
-
-interface IUsersProps {
-  id: number;
-  email: string;
-  name: string;
-  unitId: number;
-  companyId: number;
-}
+import { EditTwoTone, CloseOutlined } from "@ant-design/icons";
+import ContentHeader from "../../components/ContentHeader";
+import { IUsersProps } from "../../models/interface";
+import * as S from "./styles";
 
 const Users: React.FC = () => {
   const [data, setData] = useState<IUsersProps[]>([]);
@@ -29,24 +18,6 @@ const Users: React.FC = () => {
       });
   }, []);
 
-  // const columns = [
-  //   {
-  //     title: 'Nome',
-  //     dataIndex: 'name',
-  //     key: 'name',
-  //   },
-  //   {
-  //     title: 'Email',
-  //     dataIndex: 'email',
-  //     key: 'email',
-  //   },
-  //   {
-  //     title: 'companyId',
-  //     dataIndex: 'companyId',
-  //     key: 'companyId',
-  //   },
-  // ];
-
   const columns = [
     { title: "Nome", dataIndex: "name", key: "name" },
     { title: "Email", dataIndex: "email", key: "email" },
@@ -55,17 +26,13 @@ const Users: React.FC = () => {
       title: "Editar",
       dataIndex: "",
       key: "x",
-      render: () => (
-        <EditTwoTone  />
-      ),
+      render: () => <EditTwoTone />,
     },
     {
       title: "Deletar",
       dataIndex: "",
       key: "x",
-      render: () => (
-        <CloseOutlined />
-      ),
+      render: () => <CloseOutlined />,
     },
   ];
   return (
@@ -77,16 +44,7 @@ const Users: React.FC = () => {
       {!data ? (
         <Spin tip="Loading..." />
       ) : (
-       
-        <Table
-          columns={columns}
-          expandable={{
-            rowExpandable: (record) => record.name !== "Not Expandable",
-          }}
-          dataSource={data}
-        />
-
-
+        <Table columns={columns} dataSource={data} />
       )}
     </S.Container>
   );
